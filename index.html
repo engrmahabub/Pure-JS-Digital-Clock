@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pure JS Digital Clock</title>
+	<style>
+		body{
+		  margin:20% 40%;
+		  background:rgba(15,15,88,.4);
+		  color:#fff;
+		}
+		div{
+		  position:relative;
+		  margin-left:8px;
+		  margin-right:8px;
+		  text-align:center;
+		  width:84px;
+		  height:84px;
+		  box-shadow:0 0 20px rgba(0,0,0,.4);
+		  padding:15px;
+		  display:inline;
+		  font-size:25px;
+		  border-radius: 15px;
+		  background: #009688;
+		}
+	</style>
+	<script type="text/javascript">
+		function changeTime(){
+			var today = new Date();
+		  	var hr = today.getHours();
+		  	var mn = today.getMinutes();
+		  	var se = today.getSeconds();
+		  	hr = checkTime(hr);
+		  	mn = checkTime(mn);
+		  	se = checkTime(se);
+		  	document.getElementById('hr').innerHTML = hr;
+		  	document.getElementById('mn').innerHTML = mn;
+		  	document.getElementById('se').innerHTML = se;
+		  	
+		  	var t = setTimeout("changeTime()",500);
+		}
+		let checkTime = function(id){
+			if (id<10) {
+				id = "0"+id;
+			}
+			return id;
+		}
+	</script>
+</head>
+<body onload="changeTime()">
+  <div id="hr">00</div>:<div id="mn">00</div>:<div id="se">00</div>
+</body>
+</html>
